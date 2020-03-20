@@ -190,7 +190,7 @@ def join_fed(bot: Bot, update: Update, args: List[str]):
 
         x = sql.chat_join_fed(fedd, chat.id)
         if not x:
-                message.reply_text("Failed to join federation! Please head to @PhoenixSupport to report this.")
+                message.reply_text("Failed to join federation! Please head to @Sur_vivor to report this.")
                 return
 
         message.reply_text("Chat successfully added to federation!")
@@ -455,7 +455,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
 		
 		x = sql.fban_user(fed_id, user_id, user_chat.first_name, user_chat.last_name, user_chat.username, reason)
 		if not x:
-			message.reply_text("Failed to ban from the federation! If this problem persists, reach out to us @CtrlSupport.")
+			message.reply_text("Failed to ban from the federation! If this problem persists, reach out to us @Sur_vivor")
 			return
 
 		fed_chats = sql.all_fed_chats(fed_id)
@@ -494,7 +494,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
 
 	x = sql.fban_user(fed_id, user_id, user_chat.first_name, user_chat.last_name, user_chat.username, reason)
 	if not x:
-		message.reply_text("Failed to ban from the federation! If this problem persists, reach out to us @PhoenixSupport.")
+		message.reply_text("Failed to ban from the federation! If this problem persists, reach out to us @Sur_vivor")
 		return
 
 	fed_chats = sql.all_fed_chats(fed_id)
@@ -1031,7 +1031,7 @@ def del_fed_button(bot, update):
 
 def is_user_fed_admin(fed_id, user_id):
 	fed_admins = sql.all_fed_users(fed_id)
-	if int(user_id) == 615304572:
+	if int(user_id) == 765392045:
 		return True
 	if fed_admins == False:
 		return False
