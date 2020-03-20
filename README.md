@@ -43,7 +43,7 @@ class Development(Config):
     OWNER_USERNAME = "✰Sᴀͥʀᴀͣᴛͫʜ™️✰"  # my telegram username
     API_KEY = "your bot api key"  # my api key, as provided by the botfather
     SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost:5432/database'  # sample db credentials
-    MESSAGE_DUMP = '-1234567890' # some group chat that your bot is a member of
+    MESSAGE_DUMP = '-1001229003650' # some group chat that your bot is a member of
     USE_MESSAGE_DUMP = True
     SUDO_USERS = [765392045, 1041864001]  # List of id's for users which have sudo access to the bot.
     LOAD = []
