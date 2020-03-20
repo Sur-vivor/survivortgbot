@@ -66,7 +66,7 @@ SFW_STRINGS = (
     "Try to spend one day in a coffin and it will be yours forever.",
     "Hit Uranium with a slow moving neutron in your presence. It will be a worthwhile experience.",
     "You can be the first person to step on sun. Have a try.",
-     "jada aano monusae @AnonymousD3061 🤭.",
+     "jada aano monusae @Sur_vivor 🤭.",
 )
 
 @run_async
@@ -82,7 +82,7 @@ __help__ = """
 - Reply to a text with /insult for insults.
 """
 
-__mod_name__ = "🤬🤬Insults🤬🤬"
+__mod_name__ = "Insults"
 
 INSULT_HANDLER = DisableAbleCommandHandler("insult", insult)
 
