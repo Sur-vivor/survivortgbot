@@ -34,4 +34,3 @@ translator
 googletrans
 tswift
 speedtest-cli
-html
