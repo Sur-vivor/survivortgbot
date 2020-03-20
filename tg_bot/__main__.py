@@ -19,16 +19,17 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-Hey {}, my name is **{}**! Im a group management Bot... 
+Hey {}, my name is {}! if you have any questions about how to use me please give me / help... 
 
-Maintained by  [This guy](tg://user?id={}).
+im a group manager bot maintained by  [this man](tg://user?id={}).
 
-Press /help for all available commands !👍
+I was built on python3 using the python-telegram-bot library.... 
+
+I am completely opensource. My Orginal code is available to you [here](https://t.me/Sur_vivor) 
+
+hit help for commands /help..
 
 """
-
-
-
 
 HELP_STRINGS = """
 
@@ -46,8 +47,10 @@ Hello! my name *{}*.
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll of the following commands  / or ! can  be used...\n")
 
-DONATE_STRING = """Hey  you can Donate  to Marie Creator [Paul](t.me/sonoflars), as well as [AVATAR](t.me/Refundisillegal) for better server #ktnxbye."""
-
+DONATE_STRING = """Heya, glad to hear you want to donate!
+It took lots of work for [my creator](t.me/AnonymousD3061) to get me to where I am now, and every donation helps \
+motivate him to make me even better. All the donation money will go to a better VPS to host me, and/or beer \
+(see his bio!). He's just a poor student, so every little helps!"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -140,12 +143,12 @@ def start(bot: Bot, update: Update, args: List[str]):
             first_name = update.effective_user.first_name
             update.effective_message.reply_text(
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
-                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Join Support Group",
-                                                                       url="t.me/ctrlsupport".format(bot.username))]]))
+                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❤️✰ADD ME TO YOUR GROUP✰❤️",
+                                                                       url="t.me/{}?startgroup=true".format(bot.username))]]))
 
     else:
         
-        update.effective_message.reply_text("Yo, I'm alive👩")
+        update.effective_message.reply_text("Yo, I'm alive😏😏😏")
 
 # for test purposes
 def error_callback(bot, update, error):
@@ -377,7 +380,7 @@ def donate(bot: Bot, update: Update):
     if chat.type == "private":
         update.effective_message.reply_text(DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
-        if OWNER_ID != 594813047 and DONATION_LINK:
+        if OWNER_ID !=765392045 and DONATION_LINK:
             update.effective_message.reply_text("You can also donate to the person currently running me "
                                                 "[here]({})".format(DONATION_LINK),
                                                 parse_mode=ParseMode.MARKDOWN)
