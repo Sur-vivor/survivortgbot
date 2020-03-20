@@ -255,14 +255,14 @@ def info(bot: Bot, update: Update, args: List[str]):
     text += "\nPermanent user link: {}".format(mention_html(user.id, "link"))
 
     if user.id == OWNER_ID:
-        text += "\n\nThis person is my owner."
+        text += "\n\nHe ❤️is ❤️my ❤️owner ❤️!"
     else:
         if user.id in SUDO_USERS:
-            text += "\n\nThis person is one of my sudo users."
+            text += "\n\nThis person is one of my SUDO USER 😋"
                    
         else:
             if user.id in SUPPORT_USERS:
-                text += "\n\nThis person is one of my support users." \
+                text += "\n\nThis person is one of my SUPPORT USER .. !" \
                         
 
             if user.id in WHITELIST_USERS:
@@ -467,7 +467,7 @@ __help__ = """
 
 
 
-__mod_name__ = "Misc"
+__mod_name__ = "Others"
 
 ID_HANDLER = DisableAbleCommandHandler("id", get_id, pass_args=True)
 IP_HANDLER = CommandHandler("ip", get_bot_ip, filters=Filters.chat(OWNER_ID))
