@@ -263,10 +263,39 @@ def get_id(bot: Bot, update: Update, args: List[str]):
 
 
 @run_async
+def get_id(bot: Bot, update: Update, args: List[str]):
+    user_id = extract_user(update.effective_message, args)
+    if user_id:
+        if update.effective_message.reply_to_message and update.effective_message.reply_to_message.forward_from:
+            user1 = update.effective_message.reply_to_message.from_user
+            user2 = update.effective_message.reply_to_message.forward_from
+            update.effective_message.reply_text(
+                "The original sender, {}, has an ID of `{}`.\nThe forwarder, {}, has an ID of `{}`.".format(
+                    escape_markdown(user2.first_name),
+                    user2.id,
+                    escape_markdown(user1.first_name),
+                    user1.id),
+                parse_mode=ParseMode.MARKDOWN)
+        else:
+            user = bot.get_chat(user_id)
+            update.effective_message.reply_text("{}'s id is `{}`.".format(escape_markdown(user.first_name), user.id),
+                                                parse_mode=ParseMode.MARKDOWN)
+    else:
+        chat = update.effective_chat  # type: Optional[Chat]
+        if chat.type == "private":
+            update.effective_message.reply_text("Your id is `{}`.".format(chat.id),
+                                                parse_mode=ParseMode.MARKDOWN)
+
+        else:
+            update.effective_message.reply_text("This group's id is `{}`.".format(chat.id),
+                                                parse_mode=ParseMode.MARKDOWN)
+
+
+@run_async
 def info(bot: Bot, update: Update, args: List[str]):
     msg = update.effective_message  # type: Optional[Message]
+    chat = update.effective_chat # type: Optional[Chat]
     user_id = extract_user(update.effective_message, args)
-    chat = update.effective_chat  # type: Optional[Chat]
 
     if user_id:
         user = bot.get_chat(user_id)
@@ -277,41 +306,44 @@ def info(bot: Bot, update: Update, args: List[str]):
     elif not msg.reply_to_message and (not args or (
             len(args) >= 1 and not args[0].startswith("@") and not args[0].isdigit() and not msg.parse_entities(
         [MessageEntity.TEXT_MENTION]))):
-        msg.reply_text(tld(chat.id, "I can't extract a user from this."))
+        msg.reply_text("I can't extract a user from this.")
         return
 
     else:
         return
 
-    text =  tld(chat.id, "<b>User info</b>:")
-    text += "\nID: <code>{}</code>".format(user.id)
-    text += tld(chat.id, "\nFirst Name: {}").format(html.escape(user.first_name))
+    text = "<b>User info</b>:" \
+           "\nID: <code>{}</code>" \
+           "\nFirst Name: {}".format(user.id, html.escape(user.first_name))
 
     if user.last_name:
-        text += tld(chat.id, "\nLast Name: {}").format(html.escape(user.last_name))
+        text += "\nLast Name: {}".format(html.escape(user.last_name))
 
     if user.username:
-        text += tld(chat.id, "\nUsername: @{}").format(html.escape(user.username))
+        text += "\nUsername: @{}".format(html.escape(user.username))
 
-    text += tld(chat.id, "\nUser link: {}\n").format(mention_html(user.id, "link"))
+    text += "\nPermanent user link: {}".format(mention_html(user.id, "link"))
 
     if user.id == OWNER_ID:
-        text += tld(chat.id, "\n\nAy, This guy is my owner. I would never do anything against him!")
+        text += "\n\nThis person is my owner."
     else:
         if user.id in SUDO_USERS:
-            text += tld(chat.id, "\nThis person is one of my sudo users! " \
-            "Nearly as powerful as my owner - so watch it.")
+            text += "\n\nThis person is one of my sudo users."
+                   
         else:
             if user.id in SUPPORT_USERS:
-                text += tld(chat.id, "\nThis person is one of my support users! " \
-                        "Not quite a sudo user, but can still gban you off the map.")
+                text += "\n\nThis person is one of my support users." \
+                        
 
             if user.id in WHITELIST_USERS:
-                text += tld(chat.id, "\nThis person has been whitelisted! " \
-                        "That means I'm not allowed to ban/kick them.")
+                text += "\n\nThis person has been whitelisted! " \
+                        "That means I'm not allowed to ban/kick them."
 
     for mod in USER_INFO:
-        mod_info = mod.__user_info__(user.id, chat.id).strip()
+        try:
+            mod_info = mod.__user_info__(user.id).strip()
+        except TypeError:
+            mod_info = mod.__user_info__(user.id, chat.id).strip()
         if mod_info:
             text += "\n\n" + mod_info
 
