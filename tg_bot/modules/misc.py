@@ -265,8 +265,8 @@ def get_id(bot: Bot, update: Update, args: List[str]):
 @run_async
 def info(bot: Bot, update: Update, args: List[str]):
     msg = update.effective_message  # type: Optional[Message]
-    chat = update.effective_chat # type: Optional[Chat]
     user_id = extract_user(update.effective_message, args)
+    chat = update.effective_chat  # type: Optional[Chat]
 
     if user_id:
         user = bot.get_chat(user_id)
@@ -277,52 +277,41 @@ def info(bot: Bot, update: Update, args: List[str]):
     elif not msg.reply_to_message and (not args or (
             len(args) >= 1 and not args[0].startswith("@") and not args[0].isdigit() and not msg.parse_entities(
         [MessageEntity.TEXT_MENTION]))):
-        msg.reply_text("I can't extract a user from this.")
+        msg.reply_text(tld(chat.id, "I can't extract a user from this."))
         return
 
     else:
         return
 
-    text = "<b>User info</b>:" \
-           "\nID: <code>{}</code>" \
-           "\nFirst Name: {}".format(user.id, html.escape(user.first_name))
+    text =  tld(chat.id, "<b>User info</b>:")
+    text += "\nID: <code>{}</code>".format(user.id)
+    text += tld(chat.id, "\nFirst Name: {}").format(html.escape(user.first_name))
 
     if user.last_name:
-        text += "\nLast Name: {}".format(html.escape(user.last_name))
+        text += tld(chat.id, "\nLast Name: {}").format(html.escape(user.last_name))
 
     if user.username:
-        text += "\nUsername: @{}".format(html.escape(user.username))
+        text += tld(chat.id, "\nUsername: @{}").format(html.escape(user.username))
 
-    text += "\nPermanent user link: {}".format(mention_html(user.id, "link"))
+    text += tld(chat.id, "\nUser link: {}\n").format(mention_html(user.id, "link"))
 
     if user.id == OWNER_ID:
-        text += "\n\nHe ❤️is ❤️my ❤️owner ❤️!"
+        text += tld(chat.id, "\n\nAy, This guy is my owner. I would never do anything against him!")
     else:
         if user.id in SUDO_USERS:
-            text += "\n\nThis person is one of my SUDO USER 😋"
-                   
+            text += tld(chat.id, "\nThis person is one of my sudo users! " \
+            "Nearly as powerful as my owner - so watch it.")
         else:
             if user.id in SUPPORT_USERS:
-                text += "\n\nThis person is one of my SUPPORT USER .. !" \
-                        
+                text += tld(chat.id, "\nThis person is one of my support users! " \
+                        "Not quite a sudo user, but can still gban you off the map.")
 
             if user.id in WHITELIST_USERS:
-                text += "\n\nThis person has been whitelisted! " \
-                        "That means I'm not allowed to ban/kick them."
+                text += tld(chat.id, "\nThis person has been whitelisted! " \
+                        "That means I'm not allowed to ban/kick them.")
 
-    user_member = chat.get_member(user.id)
-    if user_member.status == 'administrator':
-        result = requests.post(f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={chat.id}&user_id={user.id}")
-        result = result.json()["result"]
-        if "custom_title" in result.keys():
-            custom_title = result['custom_title']
-            text += f"\n\nThis user holds the title <b>{custom_title}</b> here."
-            
     for mod in USER_INFO:
-        try:
-            mod_info = mod.__user_info__(user.id).strip()
-        except TypeError:
-            mod_info = mod.__user_info__(user.id, chat.id).strip()
+        mod_info = mod.__user_info__(user.id, chat.id).strip()
         if mod_info:
             text += "\n\n" + mod_info
 
