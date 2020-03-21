@@ -325,22 +325,22 @@ def info(bot: Bot, update: Update, args: List[str]):
     text += "\nPermanent user link: {}".format(mention_html(user.id, "link"))
 
     if user.id == OWNER_ID:
-        text += "\n\nThis person is my Owner❤️❤️❤️" \n
-        "I Would never do anything against him!😜"
+        text += "\n\nThis person is my Owner❤️❤️❤️.."
+        "\nI Would never do anything against him!😜"
     else:
         if user.id in SUDO_USERS:
-            text += "\n\nThis person is one of my Sudo users🧡🧡🧡" \n
-            "Nearly as powerful as my owner - so watch it!"
+            text += "\n\nThis person is one of my Sudo users🧡🧡🧡"
+            "\nNearly as powerful as my owner - so watch it!"
                    
         else:
             if user.id in SUPPORT_USERS:
-                text += "\n\nThis person is one of my support users💛💛💛" \n
-                "Not quite a sudo user, but can still gban you off the map!"
+                text += "\n\nThis person is one of my support users💛💛💛"
+                "\nNot quite a sudo user, but can still gban you off the map!"
                         
 
             if user.id in WHITELIST_USERS:
-                text += "\n\nThis person has been whitelisted🖤🖤🖤 " \n
-                        "That means I'm not allowed to ban/kick them!"
+                text += "\n\nThis person has been whitelisted🖤🖤🖤 "
+                        "\nThat means I'm not allowed to ban/kick them!"
 
     for mod in USER_INFO:
         try:
