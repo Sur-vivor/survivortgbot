@@ -17,33 +17,6 @@ from tg_bot.modules.sql.users_sql import get_all_chats
 
 GMUTE_ENFORCE_GROUP = 6
 
-GMUTE_ERRORS = {
-    "User is an administrator of the chat",
-    "Chat not found",
-    "Not enough rights to restrict/unrestrict chat member",
-    "User_not_participant",
-    "Peer_id_invalid",
-    "Group chat was deactivated",
-    "Need to be inviter of a user to kick it from a basic group",
-    "Chat_admin_required",
-    "Only the creator of a basic group can kick group administrators",
-    "Channel_private",
-    "Not in the chat"
-}
-
-UNGMUTE_ERRORS = {
-    "User is an administrator of the chat",
-    "Chat not found",
-    "Not enough rights to restrict/unrestrict chat member",
-    "User_not_participant",
-    "Method is available for supergroup and channel chats only",
-    "Not in the chat",
-    "Channel_private",
-    "Chat_admin_required",
-    "Peer_id_invalid",
-}
- 
-
 @run_async
 def gmute(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message  # type: Optional[Message]
