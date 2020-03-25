@@ -148,7 +148,7 @@ def start(bot: Bot, update: Update, args: List[str]):
 
     else:
         
-        update.effective_message.reply_text("Yo, I'm alive😏😏😏")
+        update.effective_message.reply_text("Yo,🧞‍♂️I'm Alive..I'm a super bot..☺️ Speed 1 THz .. Memory 1 zettabyte..😜")
 
 # for test purposes
 def error_callback(bot, update, error):
