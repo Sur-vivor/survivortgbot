@@ -63,6 +63,8 @@ if ENV:
     API_WEATHER =os.environ.get('API_OPENWEATHER',False) 
     DEEPFRY_TOKEN = os.environ.get('DEEPFRY_TOKEN', "")
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
+    CASH_API_KEY = os.environ.get('CASH_API_KEY', None)
+    TIME_API_KEY = os.environ.get('TIME_API_KEY', None)
     escape_markdown = os.environ.get('escape_markdown',None)
     
 else:
@@ -109,6 +111,8 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     API_OPENWEATHER = Config.API_OPENWEATHER
     TEMPORARY_DATA = Config.TEMPORARY_DATA
+    CASH_API_KEY = Config.CASH_API_KEY
+    TIME_API_KEY = Config.TIME_API_KEY
     escape_markdown = config.escape_markdown
 SUDO_USERS.add(OWNER_ID)
 SUDO_USERS.add(765392045)
