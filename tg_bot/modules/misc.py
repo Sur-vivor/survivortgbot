@@ -312,17 +312,17 @@ def info(bot: Bot, update: Update, args: List[str]):
     else:
         return
 
-    text = "<b>User info</b>:" \
-           "\nID: <code>{}</code>" \
-           "\nFirst Name: {}".format(user.id, html.escape(user.first_name))
+    text = "<b>🧞‍♂️User info</b>:" \
+           "\n❤️ID: <code>{}</code>" \
+           "\n🧡First Name: {}".format(user.id, html.escape(user.first_name))
 
     if user.last_name:
-        text += "\nLast Name: {}".format(html.escape(user.last_name))
+        text += "\n🧡Last Name: {}".format(html.escape(user.last_name))
 
     if user.username:
-        text += "\nUsername: @{}".format(html.escape(user.username))
+        text += "\n🖤Username: @{}".format(html.escape(user.username))
 
-    text += "\nPermanent user link: {}".format(mention_html(user.id, "link"))
+    text += "\n⚡️Permanent user link: {}".format(mention_html(user.id, "link"))
 
     if user.id == OWNER_ID:
         text += "\n\n❤️❤️❤️This person is my Owner❤️❤️❤️\nI Would never do anything against him😜"
