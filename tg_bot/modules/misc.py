@@ -16,7 +16,7 @@ from telegram.ext import CommandHandler, run_async, Filters
 from telegram.utils.helpers import escape_markdown, mention_html
 
 from tg_bot import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, WHITELIST_USERS, BAN_STICKER
-from tg_bot.__main__ import STATS, USER_INFO
+from tg_bot.__main__ import STATS, USER_INFO, TOKEN
 from tg_bot.modules.disable import DisableAbleCommandHandler
 from tg_bot.modules.helper_funcs.extraction import extract_user
 from tg_bot.modules.helper_funcs.filters import CustomFilters
@@ -337,6 +337,15 @@ def info(bot: Bot, update: Update, args: List[str]):
 
             if user.id in WHITELIST_USERS:
                 text += "\n\n🖤🖤🖤This person has been whitelisted🖤🖤🖤\nThat means I'm not allowed to ban/kick them!"
+             
+     user_member = chat.get_member(user.id)
+    if user_member.status == 'administrator':
+        result = requests.post(f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={chat.id}&user_id={user.id}")
+        result = result.json()["result"]
+        if "custom_title" in result.keys():
+            custom_title = result['custom_title']
+            text += f"\n\nThis user holds the title <b>{custom_title}</b> here."
+  
 
     for mod in USER_INFO:
         try:
