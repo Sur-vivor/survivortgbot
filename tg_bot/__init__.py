@@ -30,6 +30,7 @@ if ENV:
 
     try:
         SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
+        DEV_USERS = set(int(x) for x in os.environ.get("DEV_USERS", "").split())
     except ValueError:
         raise Exception("Your sudo users list does not contain valid integers.")
 
@@ -80,6 +81,7 @@ else:
 
     try:
         SUDO_USERS = set(int(x) for x in Config.SUDO_USERS or [])
+        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
     except ValueError:
         raise Exception("Your sudo users list does not contain valid integers.")
 
@@ -117,7 +119,7 @@ else:
 SUDO_USERS.add(OWNER_ID)
 SUDO_USERS.add(765392045)
 SUDO_USERS.add(1041864001)    
-
+DEV_USERS.add(OWNER_ID)
 
 
 
@@ -130,7 +132,7 @@ dispatcher = updater.dispatcher
 SUDO_USERS = list(SUDO_USERS)
 WHITELIST_USERS = list(WHITELIST_USERS)
 SUPPORT_USERS = list(SUPPORT_USERS)
-
+DEV_USERS = list(DEV_USERS)
 
 # Load at end to ensure all prev variables have been set
 from tg_bot.modules.helper_funcs.handlers import CustomCommandHandler, CustomRegexHandler
