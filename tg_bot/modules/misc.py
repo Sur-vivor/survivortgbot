@@ -338,7 +338,7 @@ def info(bot: Bot, update: Update, args: List[str]):
             if user.id in WHITELIST_USERS:
                 text += "\n\n🖤🖤🖤This person has been whitelisted🖤🖤🖤\nThat means I'm not allowed to ban/kick them!"
              
-     user_member = chat.get_member(user.id)
+    user_member = chat.get_member(user.id)
     if user_member.status == 'administrator':
         result = requests.post(f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={chat.id}&user_id={user.id}")
         result = result.json()["result"]
