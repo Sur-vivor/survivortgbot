@@ -34,3 +34,4 @@ translator
 googletrans
 tswift
 speedtest-cli
+CurrencyConverter
