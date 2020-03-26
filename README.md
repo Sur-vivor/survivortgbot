@@ -8,7 +8,7 @@ Can be found on telegram as [Տմɾѵíѵօɾ](https://t.me/TheSurvivor_bot).
 
 You can also tap the Deploy To Heroku button below to deploy straight to Heroku!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Sur-vivor/Survivor)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Sur-vivor/KingBot)
 
 ## Starting the bot.
 
