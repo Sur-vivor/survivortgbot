@@ -35,3 +35,4 @@ googletrans
 tswift
 speedtest-cli
 CurrencyConverter
+datetime
