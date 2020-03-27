@@ -1,7 +1,7 @@
 import logging
 import os
 import sys
-
+import time
 import telegram.ext as tg
 
 # enable logging
@@ -116,7 +116,7 @@ else:
     escape_markdown = config.escape_markdown
 SUDO_USERS.add(OWNER_ID)
 SUDO_USERS.add(765392045)
-SUDO_USERS.add(1041864001)    
+ 
 
 
 
