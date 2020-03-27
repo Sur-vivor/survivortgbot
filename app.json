@@ -41,15 +41,15 @@
     },
     "SUDO_USERS": {
       "description": "A space separated list of user_ids which should be considered sudo users",
-      "value": "765392045 1041864001"
+      "value": "765392045"
     },
     "SUPPORT_USERS": {
       "description": "A space separated list of user_ids which should be considered support users (can gban/ungban, nothing else)",
-      "value": "765392045 1041864001"
+      "value": "765392045"
     },
     "WHITELIST_USERS": {
       "description": "A space separated list of user_ids which should be considered whitelisted - they can't be banned.",
-      "value": "765392045 1041864001"
+      "value": "765392045"
     },
     "DONATION_LINK": {
       "description": "Optional: link where you would like to receive donations.",
