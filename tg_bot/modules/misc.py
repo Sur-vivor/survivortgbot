@@ -322,21 +322,21 @@ def info(bot: Bot, update: Update, args: List[str]):
     if user.username:
         text += "\n❤️Username: @{}".format(html.escape(user.username))
 
-    text += "\n💎Permanent user link: {}".format(mention_html(user.id, "link"))
+    text += "\n🧩Permanent user link: {}".format(mention_html(user.id, "link"))
 
     if user.id == OWNER_ID:
-        text += "\n\n❤️❤️❤️This person is my Owner❤️❤️❤️\nI Would never do anything against him😜"
+        text += "\n\nuff 🔥This person is my Owner🤴🏻\nI Would never do anything against him🕊"
     else:
         if user.id in SUDO_USERS:
-            text += "\n\n🧡🧡🧡This person is one of my Sudo users🧡🧡🧡\nNearly as powerful as my owner - so watch it!"
+            text += "\n\nuff 🔥This 🚶‍♂️person is one of my Sudo users☃️\nNearly as powerful as my owner - so watch it!"
                    
         else:
             if user.id in SUPPORT_USERS:
-                text += "\n\n💛💛💛This person is one of my support users💛💛💛\nNot quite a sudo user, but can still gban you off the map!"
+                text += "\n\nThis person is one of my support users\nNot quite a sudo user, but can still gban you off the map!"
                         
 
             if user.id in WHITELIST_USERS:
-                text += "\n\n🖤🖤🖤This person has been whitelisted🖤🖤🖤\nThat means I'm not allowed to ban/kick them!"
+                text += "\n\nThis person has been whitelisted\nThat means I'm not allowed to ban/kick them!"
              
     user_member = chat.get_member(user.id)
     if user_member.status == 'administrator':
