@@ -29,7 +29,7 @@ def check_user_id(user_id: int, bot: Bot) -> Optional[str]:
 @run_async
 def whitelistlist(bot: Bot, update: Update):
 
-    reply = "<b>Whitelist Users🐺:</b>\n"
+    reply = "<b>Whitelist Users🤍:</b>\n"
     for each_user in WHITELIST_USERS:
         user_id = int(each_user)
         try:
@@ -44,7 +44,7 @@ def whitelistlist(bot: Bot, update: Update):
 @run_async
 def supportlist(bot: Bot, update: Update):
 
-    reply = "<b>Support Users👹:</b>\n"
+    reply = "<b>Support Users🧡:</b>\n"
     for each_user in SUPPORT_USERS:
         user_id = int(each_user)
         try:
@@ -59,7 +59,7 @@ def supportlist(bot: Bot, update: Update):
 @run_async
 def sudolist(bot: Bot, update: Update):
 
-    reply = "<b>Sudo Users🐉:</b>\n"
+    reply = "<b>Sudo Users❤:</b>\n"
     for each_user in SUDO_USERS:
         user_id = int(each_user)
         try:
