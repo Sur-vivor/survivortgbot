@@ -36,4 +36,3 @@ tswift
 speedtest-cli
 CurrencyConverter
 datetime
-subprocess
