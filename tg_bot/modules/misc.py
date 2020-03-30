@@ -322,7 +322,7 @@ def info(bot: Bot, update: Update, args: List[str]):
     if user.username:
         text += "\n❤️Username: @{}".format(html.escape(user.username))
 
-    text += "\n🧩Permanent user link: {}".format(mention_html(user.id, "link"))
+    text += "\n⏳Permanent user link: {}".format(mention_html(user.id, "link"))
 
     if user.id == OWNER_ID:
         text += "\n\nuff 🔥This person is my Owner🤴🏻\nI Would never do anything against him🕊"
