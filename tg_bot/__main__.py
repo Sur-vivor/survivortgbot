@@ -22,7 +22,7 @@ PM_START_TEXT = """
 Hey {}, my name is {}! I'm a group management bot.
 If you have any questions about how to use me please give me /help. 
 I'm a group manager bot maintained by [this man](tg://user?id={}).
-My Creator is [This Man](https://t.me/Sur_vivor)😘.. 
+My Creator is 🤴[This Man](https://t.me/Sur_vivor)😘.. 
 
 Hit help for commands /help..
 
@@ -145,7 +145,7 @@ def start(bot: Bot, update: Update, args: List[str]):
 
     else:
         
-        update.effective_message.reply_text("Yo,🧞‍♂️I'm Alive..I'm a super bot 🔥...🚴‍♂️Speed 1 THz.. 💽Memory 5 Zettabyte..😜")
+        update.effective_message.reply_text("Yo,🧞‍♂️I'm Alive..I'm a super bot 🔥...🚴‍♂️Speed 1 THz..📱Memory 1 Zettabyte..😜")
 
 # for test purposes
 def error_callback(bot, update, error):
