@@ -61,7 +61,7 @@ def gettime(bot: Bot, update: Update):
     except:
         message.reply_text("Provide a country name/abbreviation/timezone to find.")
         return
-    send_message = message.reply_text(f"🔎Finding timezone info for <b>{query}</b>", parse_mode=ParseMode.HTML)
+    send_message = message.reply_text(f"Finding timezone info for <b>{query}</b>", parse_mode=ParseMode.HTML)
 
     query_timezone = query.lower()
     if len(query_timezone) == 2:
