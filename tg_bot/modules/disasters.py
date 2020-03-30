@@ -59,7 +59,6 @@ def supportlist(bot: Bot, update: Update):
 @run_async
 def sudolist(bot: Bot, update: Update):
 
-    true_sudo = list(set(SUDO_USERS) - set(DEV_USERS))
     reply = "<b>Sudo Users🐉:</b>\n"
     for each_user in true_sudo:
         user_id = int(each_user)
