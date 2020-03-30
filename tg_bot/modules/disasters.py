@@ -9,7 +9,6 @@ from telegram.ext import CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
 from tg_bot import dispatcher, WHITELIST_USERS, SUPPORT_USERS, SUDO_USERS, OWNER_ID
-from tg_bot.modules.helper_funcs.chat_status import whitelist_plus
 from tg_bot.modules.helper_funcs.extraction import extract_user
 
 
@@ -28,7 +27,6 @@ def check_user_id(user_id: int, bot: Bot) -> Optional[str]:
 
 
 @run_async
-@whitelist_plus
 def whitelistlist(bot: Bot, update: Update):
 
     reply = "<b>Whitelist Users🐺:</b>\n"
@@ -44,7 +42,6 @@ def whitelistlist(bot: Bot, update: Update):
 
 
 @run_async
-@whitelist_plus
 def supportlist(bot: Bot, update: Update):
 
     reply = "<b>Support Users👹:</b>\n"
@@ -60,7 +57,6 @@ def supportlist(bot: Bot, update: Update):
 
 
 @run_async
-@whitelist_plus
 def sudolist(bot: Bot, update: Update):
 
     true_sudo = list(set(SUDO_USERS) - set(DEV_USERS))
