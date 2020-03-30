@@ -5,6 +5,8 @@ from telegram import User, Chat, ChatMember, Update, Bot
 
 from tg_bot import DEL_CMDS, SUDO_USERS, WHITELIST_USERS
 
+def is_whitelist_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
+    return any(user_id in user for user in [WHITELIST_USERS, SUPPORT_USERS, SUDO_USERS])
 
 def can_delete(chat: Chat, bot_id: int) -> bool:
     return chat.get_member(bot_id).can_delete_messages
