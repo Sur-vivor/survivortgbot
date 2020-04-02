@@ -17,6 +17,7 @@ from tg_bot.modules.helper_funcs.chat_status import can_delete, is_user_admin, u
 from tg_bot.modules.helper_funcs.filters import CustomFilters
 from tg_bot.modules.log_channel import loggable
 from tg_bot.modules.sql import users_sql
+from tg_bot.modules.translations.strings import tld
 
 LOCK_TYPES = {'sticker': Filters.sticker,
               'audio': Filters.audio,
@@ -237,13 +238,13 @@ def rest_handler(bot: Bot, update: Update):
             break
 
 
-def build_lock_message(chat_id):
+def build_lock_message(chat_id, chat_name):
     locks = sql.get_locks(chat_id)
     restr = sql.get_restr(chat_id)
     if not (locks or restr):
-        res = "There are no current locks in this chat."
+        res = "There are no current locks in {}!".format(chat_name)
     else:
-        res = "These are the locks in this chat:"
+        res = "These are the locks in {}:".format(chat_name)
         if locks:
             res += "\n - sticker = `{}`" \
                    "\n - audio = `{}`" \
@@ -273,8 +274,7 @@ def build_lock_message(chat_id):
 @run_async
 @user_admin
 def list_locks(bot: Bot, update: Update):
-    chat = update.effective_chat  # type: Optional[Chat]
-
+    chat = update.effective_chat  # type:
     res = build_lock_message(chat.id)
 
     update.effective_message.reply_text(res, parse_mode=ParseMode.MARKDOWN)
