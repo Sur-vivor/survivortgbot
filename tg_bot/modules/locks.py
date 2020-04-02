@@ -18,7 +18,7 @@ from tg_bot.modules.helper_funcs.filters import CustomFilters
 from tg_bot.modules.log_channel import loggable
 from tg_bot.modules.sql import users_sql
 
-from haruka.modules.translations.strings import tld
+from tg_bot.modules.translations.strings import tld
 
 LOCK_TYPES = {'sticker': Filters.sticker,
               'audio': Filters.audio,
