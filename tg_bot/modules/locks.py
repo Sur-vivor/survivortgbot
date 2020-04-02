@@ -9,15 +9,15 @@ from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
 
-import haruka.modules.sql.locks_sql as sql
-from haruka import dispatcher, SUDO_USERS, LOGGER
-from haruka.modules.disable import DisableAbleCommandHandler
-from haruka.modules.helper_funcs.chat_status import can_delete, is_user_admin, user_not_admin, user_admin, \
+import tg_bot.modules.sql.locks_sql as sql
+from tg_bot import dispatcher, SUDO_USERS, LOGGER
+from tg_bot.modules.disable import DisableAbleCommandHandler
+from tg_bot.modules.helper_funcs.chat_status import can_delete, is_user_admin, user_not_admin, user_admin, \
     bot_can_delete, is_bot_admin
-from haruka.modules.log_channel import loggable
-from haruka.modules.sql import users_sql
+from tg_bot.modules.log_channel import loggable
+from tg_bot.modules.sql import users_sql
 
-from haruka.modules.translations.strings import tld
+from tg_bot.modules.translations.strings import tld
 
 LOCK_TYPES = {'sticker': Filters.sticker,
               'audio': Filters.audio,
