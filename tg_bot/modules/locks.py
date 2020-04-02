@@ -239,7 +239,7 @@ def rest_handler(bot: Bot, update: Update):
             break
 
 
-def build_lock_message(chat_id):
+def build_lock_message(chat_id, chat, chatP, user, chatname):
     locks = sql.get_locks(chat_id)
     restr = sql.get_restr(chat_id)
     if not (locks or restr):
