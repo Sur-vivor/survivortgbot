@@ -18,6 +18,8 @@ from tg_bot.modules.helper_funcs.filters import CustomFilters
 from tg_bot.modules.log_channel import loggable
 from tg_bot.modules.sql import users_sql
 
+from haruka.modules.translations.strings import tld
+
 LOCK_TYPES = {'sticker': Filters.sticker,
               'audio': Filters.audio,
               'voice': Filters.voice,
@@ -241,9 +243,9 @@ def build_lock_message(chat_id):
     locks = sql.get_locks(chat_id)
     restr = sql.get_restr(chat_id)
     if not (locks or restr):
-        res = "There are no current locks in this chat."
+        res = tld(chatP.id, "There are no current locks in *{}*.".format(chatname))
     else:
-        res = "These are the locks in this chat:"
+        res = tld(chatP.id, "These are the locks in *{}*:".format(chatname))
         if locks:
             res += "\n - sticker = `{}`" \
                    "\n - audio = `{}`" \
