@@ -109,7 +109,7 @@ def leavechat(bot: Bot, update: Update, args: List[int]):
 def slist(bot: Bot, update: Update):
     message = update.effective_message
     text1 = "My Sudo Users are❤:"
-    text2 = "My Support Users are🧡:"
+    text2 = "My Support Users are:"
     for user_id in SUDO_USERS:
         try:
             user = bot.get_chat(user_id)
