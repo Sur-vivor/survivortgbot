@@ -108,8 +108,8 @@ def leavechat(bot: Bot, update: Update, args: List[int]):
 @run_async
 def slist(bot: Bot, update: Update):
     message = update.effective_message
-    text1 = "**My Sudo Users are❤:**"
-    text2 = "**My Support Users are🧡:**"
+    text1 = "My Sudo Users are❤:"
+    text2 = "My Support Users are🧡:"
     for user_id in SUDO_USERS:
         try:
             user = bot.get_chat(user_id)
@@ -157,7 +157,7 @@ __help__ = """
 - 
 Sudo/owner can use these commands too.
 **Users:**
-- /slist Gives a list of sudo and support users
+- /slist Gives a list of sudo and Support users
 """
 
 __mod_name__ = "Special"
