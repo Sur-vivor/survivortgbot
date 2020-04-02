@@ -10,7 +10,7 @@ from telegram.utils.helpers import mention_html
 
 from tg_bot import dispatcher, WHITELIST_USERS, SUPPORT_USERS, SUDO_USERS, OWNER_ID
 from tg_bot.modules.helper_funcs.extraction import extract_user
-
+from tg_bot.modules.helper_funcs.filters import CustomFilters
 
 def check_user_id(user_id: int, bot: Bot) -> Optional[str]:
 
