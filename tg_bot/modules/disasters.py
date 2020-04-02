@@ -73,6 +73,7 @@ def sudolist(bot: Bot, update: Update):
 
 
 __help__ = """
+**Owner/Sudo only:**
  - /whitelistlist - List whitelisted users.
  - /supportlist - List support users.
  - /sudolist - List sudo users.
@@ -80,9 +81,9 @@ __help__ = """
 
 
 
-WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist"], whitelistlist)
-SUPPORTLIST_HANDLER = CommandHandler(["supportlist"], supportlist)
-SUDOLIST_HANDLER = CommandHandler(["sudolist"], sudolist)
+WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist"], whitelistlist, filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
+SUPPORTLIST_HANDLER = CommandHandler(["supportlist"], supportlist, filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
+SUDOLIST_HANDLER = CommandHandler(["sudolist"], sudolist, filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
 
 
 dispatcher.add_handler(WHITELISTLIST_HANDLER)
