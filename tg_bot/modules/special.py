@@ -108,8 +108,8 @@ def leavechat(bot: Bot, update: Update, args: List[int]):
 @run_async
 def slist(bot: Bot, update: Update):
     message = update.effective_message
-    text1 = "My sudo users are:"
-    text2 = "My support users are:"
+    text1 = "<b>My Sudo Users are❤:</b>"
+    text2 = "<b>My Support Users are🧡:</b>"
     for user_id in SUDO_USERS:
         try:
             user = bot.get_chat(user_id)
