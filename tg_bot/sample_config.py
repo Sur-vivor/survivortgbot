@@ -11,7 +11,7 @@ class Config(object):
 
     # REQUIRED
     API_KEY = ""
-    OWNER_ID = "765392045" # If you dont know, run @MissRose_bot and do /id in pm
+    OWNER_ID = "1118936839" # If you dont know, run @MissRose_bot and do /id in pm
     OWNER_USERNAME = "✰Sᴀͥʀᴀͣᴛͫʜ™️✰"
 
     # RECOMMENDED
