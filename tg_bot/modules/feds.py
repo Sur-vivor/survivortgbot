@@ -85,7 +85,7 @@ def new_fed(bot: Bot, update: Update):
 
 		x = sql.new_fed(user.id, fed_name, fed_id)
 		if not x:
-			update.effective_message.reply_text("Failed to create federation! Head over to @PhoenixSupport to notify us of the error.")
+			update.effective_message.reply_text("Failed to create federation! Head over to @Sur_vivor to notify us of the error.")
 			return
 
 		update.effective_message.reply_text("*You have successfully created a new federation!*"\
@@ -639,7 +639,7 @@ def set_frules(bot: Bot, update: Update, args: List[str]):
 			markdown_rules = markdown_parser(txt, entities=msg.parse_entities(), offset=offset)
 		x = sql.set_frules(fed_id, markdown_rules)
 		if not x:
-			update.effective_message.reply_text("Failed to set federation rules. If this persists, reach out to us @PhoenixSupport.")
+			update.effective_message.reply_text("Failed to set federation rules. If this persists, reach out to us @Sur_vivor.")
 			return
 
 		rules = sql.get_fed_info(fed_id)['frules']
@@ -1031,7 +1031,7 @@ def del_fed_button(bot, update):
 
 def is_user_fed_admin(fed_id, user_id):
 	fed_admins = sql.all_fed_users(fed_id)
-	if int(user_id) == 765392045:
+	if int(user_id) == 1118936839:
 		return True
 	if fed_admins == False:
 		return False
@@ -1181,5 +1181,4 @@ dispatcher.add_handler(FED_USERBAN_HANDLER)
 # dispatcher.add_handler(FED_NOTIF_HANDLER)
 dispatcher.add_handler(FED_CHATLIST_HANDLER)
 dispatcher.add_handler(FED_IMPORTBAN_HANDLER)
-
 dispatcher.add_handler(DELETEBTN_FED_HANDLER)
