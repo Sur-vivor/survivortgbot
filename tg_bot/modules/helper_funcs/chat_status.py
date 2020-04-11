@@ -3,7 +3,7 @@ from typing import Optional
 
 from telegram import User, Chat, ChatMember, Update, Bot
 
-from tg_bot import DEL_CMDS, SUDO_USERS, WHITELIST_USERS
+from tg_bot import DEL_CMDS, SUDO_USERS, WHITELIST_USERS, OWNER_ID
 
 def can_delete(chat: Chat, bot_id: int) -> bool:
     return chat.get_member(bot_id).can_delete_messages
@@ -95,6 +95,21 @@ def can_restrict(func):
     return promote_rights
 
 
+def owner_plus(func):
+    @wraps(func)
+    def is_dev_plus_func(bot: Bot, update: Update, *args, **kwargs):
+
+        user = update.effective_user
+
+        if user.id in OWNER_ID:
+            return func(bot, update, *args, **kwargs)
+        elif not user:
+            pass
+        elif DEL_CMDS and " " not in update.effective_message.text:
+            update.effective_message.delete()
+        else:
+            update.effective_message.reply_text("This is a developer restricted command."
+                                                " You do not have permissions to run this.")
 
 def sudo_user(func):
     @wraps(func)
