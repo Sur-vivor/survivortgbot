@@ -97,7 +97,7 @@ def can_restrict(func):
 
 def owner_plus(func):
     @wraps(func)
-    def is_dev_plus_func(bot: Bot, update: Update, *args, **kwargs):
+    def is_owner_plus_func(bot: Bot, update: Update, *args, **kwargs):
 
         user = update.effective_user
 
@@ -110,6 +110,8 @@ def owner_plus(func):
         else:
             update.effective_message.reply_text("This is a developer restricted command."
                                                 " You do not have permissions to run this.")
+            
+    return is_owner_plus_func        
 
 def sudo_user(func):
     @wraps(func)
