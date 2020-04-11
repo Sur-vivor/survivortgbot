@@ -10,7 +10,7 @@ from tg_bot.modules.helper_funcs.chat_status import sudo_user, owner_plus
 
 
 @run_async
-@sudo_user
+@owner_plus
 def load(bot: Bot, update: Update):
     message = update.effective_message
     text = message.text.split(" ", 1)[1]
@@ -72,7 +72,7 @@ def load(bot: Bot, update: Update):
 
 
 @run_async
-@sudo_user
+@owner_plus
 def unload(bot: Bot, update: Update):
     message = update.effective_message
     text = message.text.split(" ", 1)[1]
