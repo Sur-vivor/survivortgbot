@@ -97,8 +97,8 @@ Powered by CoffeeHouse (https://coffeehouse.intellivoid.net/) from @Intellivoid
  - /rmchat  : Disables Chatbot mode in the chat.
 """
                   
-ADD_CHAT_HANDLER = CommandHandler("addchat", add_chat, filters=CustomFilters.dev_filter)
-REMOVE_CHAT_HANDLER = CommandHandler("rmchat", remove_chat, filters=CustomFilters.dev_filter)
+ADD_CHAT_HANDLER = CommandHandler("addchat", add_chat, filters=Filters.user(OWNER_ID))
+REMOVE_CHAT_HANDLER = CommandHandler("rmchat", remove_chat, filters=Filters.user(OWNER_ID))
 CHATBOT_HANDLER = MessageHandler(Filters.text & (~Filters.regex(r"^#[^\s]+") & ~Filters.regex(r"^!")
                                   & ~Filters.regex(r"^s\/")), chatbot)
 # Filters for ignoring #note messages, !commands and sed.
