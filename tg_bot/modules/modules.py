@@ -1,16 +1,15 @@
 import importlib
 
 from telegram import Bot, Update, ParseMode
-from telegram.ext import CommandHandler, run_async, Filters
+from telegram.ext import CommandHandler, run_async
 
 from tg_bot import dispatcher
 from tg_bot.__main__ import (IMPORTED, HELPABLE, MIGRATEABLE, STATS, USER_INFO, DATA_IMPORT, DATA_EXPORT, CHAT_SETTINGS,
                              USER_SETTINGS)
 from tg_bot.modules.helper_funcs.chat_status import sudo_user
-from tg_bot.modules.helper_funcs.filters import CustomFilters
-
 
 @run_async
+@sudo_user
 def load(bot: Bot, update: Update):
     message = update.effective_message
     text = message.text.split(" ", 1)[1]
@@ -72,6 +71,7 @@ def load(bot: Bot, update: Update):
 
 
 @run_async
+@sudo_user
 def unload(bot: Bot, update: Update):
     message = update.effective_message
     text = message.text.split(" ", 1)[1]
@@ -149,8 +149,8 @@ def listmodules(bot: Bot, update: Update):
     message.reply_text(module_list, parse_mode=ParseMode.HTML)
 
 
-LOAD_HANDLER = CommandHandler("load", load, filters=Filters.user(OWNER_ID))
-UNLOAD_HANDLER = CommandHandler("unload", unload, filters=Filters.user(OWNER_ID))
+LOAD_HANDLER = CommandHandler("load", load)
+UNLOAD_HANDLER = CommandHandler("unload", unload)
 LISTMODULES_HANDLER = CommandHandler("listmodules", listmodules)
 
 dispatcher.add_handler(LOAD_HANDLER)
