@@ -38,6 +38,7 @@ class Config(object):
     API_OPENWEATHER = False #Get API_OPENWEATHER FROM OFFICAL SITE https://da.gd/VAW3
     TEMPORARY_DATA = None # Temporary data for backup module, use int number
     TIME_API_KEY = None # Get one from https://timezonedb.com/register
+    AI_API_KEY = None # Coffeehouse chatbot api key, get one from https://coffeehouse.intellivoid.info/
 
 class Production(Config):
     LOGGER = False
