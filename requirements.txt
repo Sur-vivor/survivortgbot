@@ -37,4 +37,3 @@ speedtest-cli
 CurrencyConverter
 datetime
 coffeehouse
-random
