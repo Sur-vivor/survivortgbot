@@ -23,7 +23,7 @@ Hey {}, my name is {}! I'm a group management bot.
 If  you have any questions about how to use me please give me /help. 
 I'm a group manager bot maintained by [this man](tg://user?id={}).
 My Creator is 🤴[This Man](https://t.me/Sur_vivor)😘.. 
-
+Source[here](https://github.com/Sur-vivor/survivortgbot)
 Hit help for commands /help..
 
 """
